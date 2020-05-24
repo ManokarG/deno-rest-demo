@@ -1,8 +1,6 @@
 import { Application, Router, isHttpError, Status } from "https://deno.land/x/oak/mod.ts";
 import { config } from "https://deno.land/x/dotenv/mod.ts";
 import { v4 } from "https://deno.land/std/uuid/mod.ts";
-// import { MongoClient } from "https://deno.land/x/mongo@v0.7.0/mod.ts";
-// import "https://deno.land/x/dotenv/load.ts";
 import * as yup from 'https://cdn.pika.dev/yup@^0.28.1';
 const env = config();
 
@@ -18,16 +16,6 @@ const dinosaurSchema = yup.object().shape({
     name: yup.string().trim().min(2).required(),
     image: yup.string().trim().url().required()
 })
-
-// interface IRequestError{
-//     status: number
-// };
-
-// class RequestError extends Error implements IRequestError{
-//     constructor(...args){
-//         super(...args);
-//     }
-// };
 
 interface RequestError extends Error {
     status: number
